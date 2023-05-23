@@ -25,6 +25,7 @@ import { useHasCode } from "../useErigonHooks";
 import { useAddressOrENS } from "../useResolvedAddresses";
 import { useSourcifyMetadata } from "../sourcify/useSourcify";
 import { ChecksummedAddress } from "../types";
+import Store from "./address/Store";
 
 type AddressMainPageProps = {};
 
@@ -125,6 +126,7 @@ const AddressMainPage: React.FC<AddressMainPageProps> = () => {
                     </span>
                   </NavTab>
                 )}
+                <NavTab href={`/address/${addressOrName}/store`}>Store</NavTab>
               </Tab.List>
               <Tab.Panels>
                 <Routes>
@@ -168,6 +170,10 @@ const AddressMainPage: React.FC<AddressMainPageProps> = () => {
                         match={match}
                       />
                     }
+                  />
+                  <Route
+                    path="store"
+                    element={<Store address={checksummedAddress} />}
                   />
                 </Routes>
               </Tab.Panels>

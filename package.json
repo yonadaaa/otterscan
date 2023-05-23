@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "@chainlink/contracts": "^0.6.1",
+    "@ethersproject/providers" : "5.7.2",
     "@fontsource/fira-code": "^4.5.13",
     "@fontsource/roboto": "^4.5.8",
     "@fontsource/roboto-mono": "^4.5.10",
@@ -15,6 +16,9 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@headlessui/react": "^1.7.7",
+    "@latticexyz/network": "2.0.0-alpha.1.196",
+    "@latticexyz/schema-type": "2.0.0-alpha.1.196",
+    "@latticexyz/utils": "2.0.0-alpha.1.196",
     "@otterscan/react-qr-reader": "^5.2.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

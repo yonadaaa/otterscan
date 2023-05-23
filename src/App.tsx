@@ -8,6 +8,7 @@ import Footer from "./Footer";
 import { ConnectionStatus } from "./types";
 import { RuntimeContext, useRuntime } from "./useRuntime";
 import { ChainInfoContext, useChainInfoFromMetadataFile } from "./useChainInfo";
+import StoreTable from "./execution/address/StoreTable";
 
 const Block = lazy(() => import("./execution/Block"));
 const BlockTransactions = lazy(() => import("./execution/BlockTransactions"));
@@ -58,6 +59,10 @@ const App = () => {
                     />
                     <Route path="tx/:txhash/*" element={<Transaction />} />
                     <Route
+                      path="address/:addressOrName/store/:name"
+                      element={<StoreTable />}
+                    />
+                    <Route
                       path="address/:addressOrName/*"
                       element={<Address />}
                     />
@@ -65,7 +70,10 @@ const App = () => {
                       <>
                         <Route path="contracts/*" element={<AllContracts />} />
                         <Route path="token/erc20/*" element={<AllERC20 />} />
-                        <Route path="token/erc4626/*" element={<AllERC4626 />} />
+                        <Route
+                          path="token/erc4626/*"
+                          element={<AllERC4626 />}
+                        />
                         <Route path="token/erc721/*" element={<AllERC721 />} />
                         <Route
                           path="token/erc1155/*"
