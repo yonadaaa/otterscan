@@ -100,8 +100,14 @@ const StoreTable: React.FC = () => {
   return (
     <StandardFrame>
       <StandardSubtitle>
-        {tableId.namespace}:{tableId.name}
+        <div className="flex items-baseline space-x-2">
+          <span>Table</span>
+          <span className="font-address text-base text-gray-500">
+            {tableId.namespace}:{tableId.name}
+          </span>
+        </div>
       </StandardSubtitle>
+
       <ContentFrame tabs>
         <InfoRow title="World">
           <DecoratedAddressLink address={addressOrName} plain />
