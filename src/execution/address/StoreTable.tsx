@@ -18,6 +18,7 @@ import { useConfig } from "../../useConfig";
 import { decodeData } from "./decodeData";
 import { useParams } from "react-router-dom";
 import StandardSubtitle from "../../components/StandardSubtitle";
+import { JsonRpcProvider } from "@ethersproject/providers";
 
 const abi = [
   "function getKeySchema(bytes32) public view returns (bytes32)",
@@ -30,6 +31,10 @@ const metadataTableId = new TableId("mudstore", "StoreMetadata");
 
 const StoreTable: React.FC = () => {
   const { addressOrName, name } = useParams();
+
+  if (!addressOrName || !name) {
+    return <div>Enter an address and name.</div>;
+  }
 
   const tableId = new TableId("", name);
 
@@ -78,7 +83,7 @@ const StoreTable: React.FC = () => {
           addressOrName,
           [TableId.fromHexString(tableId.toHexString())],
           blockNumber,
-          provider[1]
+          provider[1] as JsonRpcProvider
         ).then(setRecords);
       });
     }
@@ -123,9 +128,9 @@ const StoreTable: React.FC = () => {
                   {Object.values(p.indexedKey).map((key, i) => (
                     <td>
                       {schema.keySchema.staticFields[i] === 97 ? (
-                        <DecoratedAddressLink address={key} plain />
+                        <DecoratedAddressLink address={key as string} plain />
                       ) : (
-                        <div>{key}</div>
+                        <div>{key as string}</div>
                       )}
                     </td>
                   ))}
